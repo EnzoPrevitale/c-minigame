@@ -6,7 +6,6 @@ void render() {
 }
 
 int main(){
-    printf("Rodando");
     Player player = {0, 0};
     Game game = {.player= &player};
     init(&game);

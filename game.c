@@ -1,22 +1,6 @@
-#include <SDL2/SDL.h>
-
+#include "headers/header.h"
 #include "headers/game.h"
-
-#define CROSS 0
-#define CIRCLE 1
-#define SQUARE 2
-#define TRIANGLE 3
-#define MEDIA 4
-#define CENTER 5
-#define MENU 6
-#define L3 7
-#define R3 8
-#define L1 9
-#define R1 10
-#define UP 11
-#define DOWN 12
-#define LEFT 13
-#define RIGHT 14
+#include "player.c"
 
 int init(Game *g) {
     SDL_Init(SDL_INIT_GAMECONTROLLER);
@@ -32,10 +16,5 @@ int init(Game *g) {
 }
 
 void tick(Game *game) {
-    SDL_Event e;
-    while (SDL_PollEvent(&e)) {
-        if (e.type == SDL_CONTROLLERBUTTONDOWN) {
-            printf("%d\n", e.cbutton.button);
-        }
-    }
+    move(game->player);
 }
