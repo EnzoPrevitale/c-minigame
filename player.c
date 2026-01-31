@@ -1,4 +1,5 @@
 #include "headers/header.h"
+#include <SDL2/SDL_events.h>
 #include "headers/player.h"
 
 #define CROSS 0
@@ -26,11 +27,10 @@ void move(Player *player) {
             } else if (e.cbutton.button == RIGHT) {
                 player->x++;
             } else if (e.cbutton.button == UP) {
-                player->y++;
-            } else if (e.cbutton.button == DOWN){
                 player->y--;
+            } else if (e.cbutton.button == DOWN){
+                player->y++;
             }
-            printf("%d, %d\n", player->x, player->y);
         }
     }
 }

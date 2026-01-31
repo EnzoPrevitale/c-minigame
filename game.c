@@ -18,3 +18,17 @@ int init(Game *g) {
 void tick(Game *game) {
     move(game->player);
 }
+
+void render(Game *game) {
+    system("clear");
+    for(int y = 0; y < 15; y++) {
+        for(int x = 0; x < 100; x++) {
+            if(x == (int)game->player->x && y == (int)game->player->y) {
+                printf("0");
+            } else {
+                printf("_");
+            }
+        }
+        printf("\n");
+    }
+}

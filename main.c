@@ -1,9 +1,6 @@
 #include "headers/header.h"
 #include "game.c"
-
-void render() {
-    system("clear");
-}
+#include <unistd.h>
 
 int main(){
     Player player = {0, 0};
@@ -12,6 +9,7 @@ int main(){
 
     while(1) {
         tick(&game);
+        render(&game);
     }
 
     return 0;
