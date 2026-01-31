@@ -4,6 +4,7 @@
 #include "player.h"
 
 typedef struct {
+    int running;
     Player *player;
 } Game;
 

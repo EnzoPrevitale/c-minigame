@@ -17,20 +17,39 @@
 #define DOWN 12
 #define LEFT 13
 #define RIGHT 14
+#define UP_DIR 1
+#define RIGHT_DIR 2
+#define DOWN_DIR 3
+#define LEFT_DIR 4
 
 void move(Player *player) {
     SDL_Event e;
     while (SDL_PollEvent(&e)) {
         if (e.type == SDL_CONTROLLERBUTTONDOWN) {
             if(e.cbutton.button == LEFT) {
-                player->x--;
+                player->dir = LEFT_DIR;
             } else if (e.cbutton.button == RIGHT) {
-                player->x++;
+                player->dir = RIGHT_DIR;
             } else if (e.cbutton.button == UP) {
-                player->y--;
+                player->dir = UP_DIR;
             } else if (e.cbutton.button == DOWN){
-                player->y++;
+                player->dir = DOWN_DIR;
             }
+            player->move = 1;
+        } else if (e.type == SDL_CONTROLLERBUTTONUP) {
+            player->move = 0;
+        }
+    }
+
+    if(player->move) {
+        if(player->dir == LEFT_DIR) {
+            player->x--;
+        } else if (player->dir == RIGHT_DIR) {
+            player->x++;
+        } else if (player->dir == UP_DIR) {
+            player->y--;
+        } else if (player->dir == DOWN_DIR){
+            player->y++;
         }
     }
 }

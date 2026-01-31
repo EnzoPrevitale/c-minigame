@@ -2,7 +2,8 @@
 #include "headers/game.h"
 #include "player.c"
 
-int init(Game *g) {
+int init(Game *game) {
+    game->running = 1;
     SDL_Init(SDL_INIT_GAMECONTROLLER);
 
     if(SDL_NumJoysticks() < 1) {
@@ -24,9 +25,9 @@ void render(Game *game) {
     for(int y = 0; y < 15; y++) {
         for(int x = 0; x < 100; x++) {
             if(x == (int)game->player->x && y == (int)game->player->y) {
-                printf("0");
+                printf("%d", game->player->dir);
             } else {
-                printf("_");
+                printf(" ");
             }
         }
         printf("\n");
